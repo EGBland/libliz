@@ -1,6 +1,7 @@
 CC = gcc
 MKDIR = mkdir -p
 RM = rm -rf
+AR = ar rcs $(LIBNAME) $(OBJECTS)
 CFLAGS = -g -Wall -Iinclude
 FILES = list.c graph.c
 
@@ -13,7 +14,7 @@ all: $(LIBNAME)
 test: $(EXENAME)
 
 $(LIBNAME): $(OBJECTS)
-	ar rcs $(LIBNAME) $(OBJECTS)
+	$(AR)
 	$(RM) $(OBJECTS)
 
 $(OBJECTS): %.o: src/%.c
