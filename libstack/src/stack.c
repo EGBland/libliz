@@ -1,10 +1,8 @@
 #include <stdlib.h>
 #include <stack.h>
 
-Stack *stack_new() {
-    Stack *theStack = (Stack *)malloc(sizeof(Stack));
-    theStack->size = 0;
-    return theStack;
+void stack_init(Stack *stack) {
+    stack->size = 0;
 }
 
 void stack_destroy(Stack *stack) {
@@ -16,7 +14,6 @@ void stack_destroy(Stack *stack) {
         top = prev;
     }
     free(top);
-    free(stack);
 }
 
 void stack_push(Stack *stack, void *val) {
