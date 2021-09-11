@@ -3,16 +3,20 @@
 
 int main() {
     printf("Creating stack\n");
-    Stack *mystack = stack_new();
+    Stack mystack;
+    stack_init(&mystack);
+
     printf("Pushing to stack\n");
-    int myarr[5];
-    for(int i = 12; i < 12+5; i++) {
-        myarr[i-12] = i;
-        stack_push(mystack, myarr+i-12);
+    for(int i = 12; i < 12+8; i++) {
+        stack_pushi(&mystack, i);
     }
+
     printf("Popping from stack\n");
-    while(mystack->size > 0) {
-        int *myval = (int *)stack_pop(mystack);
-        printf("%d\n",*myval);
+    while(mystack.size > 2) {
+        int myval = stack_popi(&mystack);
+        printf("%d\t%d\n",myval,mystack.size);
     }
+
+    printf("Destroying stack\n");
+    stack_destroy(&mystack);
 }

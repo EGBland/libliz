@@ -3,10 +3,10 @@ MKDIR = mkdir -p
 RM = rm -rf
 AR = ar rcs $(LIBNAME) $(OBJECTS)
 CFLAGS = -g -Wall -Iinclude -O3
-FILES = stack.c
+FILES = arraylist.c
 
 OBJECTS = $(FILES:.c=.o)
-LIBNAME = libstack.a
+LIBNAME = liblist.a
 EXENAME = test.o
 
 all: $(LIBNAME)
@@ -22,7 +22,7 @@ $(OBJECTS): %.o: src/%.c
 
 # tries to make test.o twice?
 $(EXENAME): src/main.c $(LIBNAME)
-	$(CC) -static $(CFLAGS) $< -L. -lstack -o $@
+	$(CC) -static $(CFLAGS) $< -L. -llist -o $@
 
 clean:
 	$(RM) $(OBJECTS)
